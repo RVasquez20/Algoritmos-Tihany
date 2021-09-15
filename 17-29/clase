@@ -1,0 +1,37 @@
+Divide y venceras:
+El principio en el cual se basael paradigma de disenio de algoritmo de divide y venceras es que es mas facil resolver
+varios casos pequenios de un problema grande que resolver solo 1 caso que envuelva todo el problema.
+Los algoritmos que emplean el enfoque de divide y venceras: dividen el problema en ejemplares mas pequenios del mismo problema, luego resuelven los ejemplares mas pequenios de forma recursiva, y por ultimo combinan las soluciones para obtener la solucion correspondiente a la entrada original.
+Para diseniar un algorimo de divide y venceras especifico debemos especificar las subrutinas resolverDirectamente,
+dividir y combinar.
+El numero de casos mas pequenios en los que se divide la entrada es k. Con una entrada de tamanio n , sea B(n) el numero 
+de pasos efectuados por ResolverDirectamente, sea D(n) el numero de pasos efectuados por dividir, y sea c(n) el numero de pasos efectuados por combinar.Entonces la forma general de la ecuacion de recurrencia que describe la cantidad de trabajo efectuada es:
+
+T(n)=D(n)+Sumatoria(k,i=1)T(tamanio(I*sub*i)))+C(n) para n> pequenio
+
+
+Esquema o esqueleto:
+resolver(I)
+  n=tamanio(I)
+  if(n<=pequenio)
+    solucion = resolverDirectamente(I)
+  else
+    dividir I en I1...In
+    para cada i pertenenciente a {I1....In}
+    S[i]=resolver(I[i])
+    solucion=combinar(S[i]...S[k])
+    return solucion.
+
+El Algoritmo QuickSort:
+
+La estrategia de quicksort consiste en reacomodar los elementos a ordenar de modo que todas las claves(valores) mas pequenios precedan a las claves grandes en el arreglo.Luego Quicksort ordena los 2 subintervalos de claves pequenias y grandes recursivamente, el resultado es que todo el arreglo queda ordenado. Si la implementacion se hace con arreglos no hay nada que hacer en el paso de combinacion, pero quicksort tambien puede funcionar con listas, en cuyo caso el paso de combinacion concatena las 2 listas. por sencillez describimos solo la implementacion con arreglos.
+
+Sea E el arreglo de elementos y sean P y U los indices de los elementos primero y ultimo, del subintervalo que Quicksort esta ordenando actualmente.
+En el nivel mas alto P=0 y U=n-1, donde n es el numero de elementos del arreglo
+El algoritmo Quicksort escoge un elemento, llamado elemento pivote y cuya clave es PV, del subintervalo que debe ordenar y lo hace a un lado es decir que lo coloca en una variable local dejando una vacante en el arreglo. por el momento supondremos que se escoge como elemento pivote el elemento de el extremo izquierdo del subintervalo.
+Quicksort pasa el PV a la subrutina llamada Partir, que reacomoda los demas elementos encontrando un indice PuntoPartir tal que:
+
+1)Para P<=i<PuntoPartir, E[i].clave<PV
+2)y para PuntoPartir<i<=U,E[i].clave>=PV
+
+

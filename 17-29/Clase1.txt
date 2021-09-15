@@ -1,0 +1,27 @@
+Entradas: E,un arreglo de n elementos simempre n>=0.Dl intervalo de los indices 0....n-1, n numero de elementos
+Salidas: E,con los elementos en orden no decrecresiente segun sus claves
+
+void OrdenamientoInsercion(int[] E, int n){
+int indicex;
+  for(indicex = 1 ; indicex < n ; indicex++){
+      int actual = E[indicex];
+      int x = actual;
+      int posx = desplazamientoVacante(E,indicex,x);
+      E[posx]=actual;
+  }
+}
+
+int desplazamientoVacante(int[] E,int indicex, int x){
+  int vacante,posx;
+  vacante=indicex;
+  posx=0;
+  while(vacante>0){
+    if(E[vacante-1]<=x){
+    posx=vacante //suponer que fue exito
+    }else{
+    E[vacante]=E[vacante-1];
+    vacante--;//seguir buscando
+    }
+  }
+  return posx;
+}
